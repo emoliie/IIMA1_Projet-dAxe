@@ -161,14 +161,18 @@ nav .menu:hover {
 /*========== POPUP ==========*/
 
 #open-popup {
-  position: fixed;
-  right: 50px;
+  position: absolute;
+  right: -50px;
   bottom: 50px;
   padding: 1rem;
   border-radius: 50%;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+}
+
+.fa-solid {
+  font-size: 30px
 }
 
 .popup {
@@ -352,6 +356,16 @@ body.active-popup .popup {
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
+  padding: 0.7rem 3rem;
+  border-radius: 5rem;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  margin-top: 20px;
 }
 
 .box button.hidden {
