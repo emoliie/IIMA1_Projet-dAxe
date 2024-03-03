@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Harry Potter</title>
+  </head>
+  <body>
+    <nav>
+      <a href="homepage.html"
+        ><img src="/images/logo.png" alt="harry potter logo" class="logo"
+      /></a>
+      <ul class="list" id="burger-menu">
+        <li><a href="homepage.html" class="menu">Home</a></li>
+        <li><a href="cards.html" class="menu">Cards</a></li>
+        <li><a href="about.html" class="menu">About</a></li>
+        <li><a href="login.html" class="menu">My Account</a></li>
+      </ul>
+      <div class="button-section" id="button" onclick="burgerMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </nav>
+    <section class="main">
+      <div id="search-container">
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search a character's card here."
+        />
+        <button id="search">Search</button>
+      </div>
+
+      <div class="filter">
+        <button class="button-value" onclick="filterSelection('all', this)">
+          All
+        </button>
+        <button
+          class="button-value"
+          onclick="filterSelection('Gryffindor', this)"
+        >
+          Gryffindor
+        </button>
+        <button
+          class="button-value"
+          onclick="filterSelection('Slytherin', this)"
+        >
+          Slytherin
+        </button>
+        <button
+          class="button-value"
+          onclick="filterSelection('Ravenclaw', this)"
+        >
+          Ravenclaw
+        </button>
+        <button
+          class="button-value"
+          onclick="filterSelection('Hufflepuff', this)"
+        >
+          Hufflepuff
+        </button>
+      </div>
+
+      <div class="slider">
+        <div id="characters-list"></div>
+
+        <button id="next">></button>
+        <button id="prev"><</button>
+      </div>
+    </section>
+
+    <script src="app.js"></script>
+    <script src="script-cards.js"></script>
+  </body>
+</html>
