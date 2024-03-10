@@ -304,7 +304,6 @@ body.active-popup .popup {
   font-weight: 900;
   position: absolute;
   bottom: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35);
 }
 
 .item img {

@@ -6,27 +6,38 @@ function fetchCharacters() {
   );
 }
 
-async function displayCharacters() {
-  try {
-    const data = await fetchCharacters();
-    // console.log(data);
-    const charactersContainer = document.getElementById("characters-list");
-    // Crée une chaîne HTML pour stocker les noms des personnages
-    let htmlContent = "<div>";
-
-    // Boucle à travers chaque personnage et ajoute son nom à la chaîne HTML
-    data.forEach((person) => {
-      htmlContent += `
-      <div class="item ${person.house}">
-        <h3>${person.name}</h3>
-        <img src="${person.image}" alt="${person.name}" />
-      </div>
-      `;
+async function getData() {
+  characters = await fetchCharacters();
+  for (const character of characters) {
+    // On remplit toutes les données
+    data.push({
+      character,
+      html:createCard(character)
     });
-    htmlContent += "</div>";
+  }
+}
 
-    // Affiche la chaîne HTML dans la div
-    charactersContainer.innerHTML = htmlContent;
+function createCard(character) {
+// Crée une chaîne HTML pour stocker les noms des personnages
+  return `
+      <div class="item">
+        <h3>${character.name}</h3>
+        <img src="${character.image}" alt="${character.name}" />
+      </div>
+  `;
+}
+
+function displayCharacters() {
+  try {
+    const charactersContainer = document.getElementById("characters-list");
+    // Boucle à travers chaque personnage et ajoute son nom à la chaîne HTML
+    let html = "<div>"
+    activeCards.forEach((data) => {
+      html += data.html;
+    });
+    html += "</div>"
+
+    charactersContainer.innerHTML = html
 
     items = document.getElementsByClassName("item");
     loadShow();
@@ -38,14 +49,24 @@ async function displayCharacters() {
   }
 }
 
+async function loadCards() {
+  await getData();
+  filterSelection("all");
+  displayCharacters();
+}
+
 // CARROUSEL
 
-let items = [];
+let characters = []; // Informations des personnages
+let data = []; // Toutes les données
+let activeCards = []; // Cartes actives (basé sur data)
+let items = []; // Tableaux des éléments (cartes)
 let next = document.getElementById("next");
 let prev = document.getElementById("prev");
 
 let active = 0; // on affiche la premire carte
 function loadShow() {
+  if (items.length == 0) return;
   items[active].style.transform = "none";
   items[active].style.zIndex = 1;
   items[active].style.filter = "none";
@@ -104,30 +125,20 @@ prev.onclick = function () {
   loadShow();
 };
 
-displayCharacters();
+loadCards();
 
 // FILTRES
-
-// Cette fonction filtre les éléments basés sur la classe spécifiée.
 function filterSelection(selectedHouse) {
-  // Obtient tous les éléments avec la classe 'item'.
-  var items = document.getElementsByClassName("item");
+  activeCards = data.filter((item) => item.character.house == selectedHouse || selectedHouse === "all");
+  active = 0; // On remet la carte active à celle du début
+  displayCharacters();
+}
 
-  // Boucle à travers tous les éléments 'item'.
-  for (var i = 0; i < items.length; i++) {
-    // Si 'all' est sélectionné ou si l'élément contient la classe sélectionnée, affiche l'élément.
-    if (selectedHouse === "all" || items[i].classList.contains(selectedHouse)) {
-      items[i].style.display = "block";
-    } else {
-      // Sinon, cache l'élément.
-      items[i].style.display = "none";
-    }
-  }
-
-  // Écoute l'événement de chargement de la page pour filtrer tous les éléments par défaut.
-  document.addEventListener("DOMContentLoaded", function () {
-    filterSelection("all");
-  });
+function filterSelectionByCharacterName(name) {
+  // Compare l'input avec le nom de chaque personnage en minuscule (pour éviter de comparer des majuscules et minuscule)
+  activeCards = data.filter((item) => item.character.name.toLowerCase().includes(name.toLowerCase()));
+  active = 0; // On remet la carte active à celle du début
+  displayCharacters();
 }
 
 // RECHERCHE
@@ -135,10 +146,10 @@ function filterSelection(selectedHouse) {
 function initializeSearch() {
   const searchInput = document.getElementById("search-input");
 
-  searchInput.addEventListener("input", () => {
+  searchInput.addEventListener("input", (event) => {
+    const text = searchInput.value.trim();
     // Utilise la valeur actuelle de l'input pour filtrer les personnages
-    console.log(displayCharacters(searchInput.value.trim()));
-    displayCharacters(searchInput.value.trim());
+    filterSelectionByCharacterName(text);
   });
 }
 
