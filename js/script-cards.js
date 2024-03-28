@@ -128,6 +128,7 @@ prev.onclick = function () {
 loadCards();
 
 // FILTRES
+
 function filterSelection(selectedHouse) {
   activeCards = data.filter((item) => item.character.house == selectedHouse || selectedHouse === "all");
   active = 0; // On remet la carte active à celle du début
