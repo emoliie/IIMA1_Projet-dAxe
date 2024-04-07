@@ -28,8 +28,8 @@
         life.
       </p>
       <div class="buttons">
-        <a href="cards.html"><button>Discover</button></a>
-        <a href="login.html"><button>Join</button></a>
+        <a href="../php/cards.php"><button>Discover</button></a>
+        <a href="../php/login.php"><button>Join</button></a>
       </div>
     </div>
     <img id="homepage-img" src="../images/harry-potter.png" alt="harry potter" />
@@ -50,6 +50,7 @@
   </div>
 
   <script src="../js/app.js"></script>
+  <script src="../js/popup.js"></script>
   <script src="https://kit.fontawesome.com/5a6fe80c93.js" crossorigin="anonymous"></script>
 </body>
 
