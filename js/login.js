@@ -4,7 +4,7 @@ if (token) {
   window.location.href = "http://127.0.0.1/PROJET%20D'AXE%20CDI/php/user.php";
 }
 
-// LOGIN
+// ANIMATION
 
 const box = document.getElementById("box");
 const registerBtn = document.getElementById("register");
@@ -18,6 +18,8 @@ loginBtn.addEventListener("click", () => {
   box.classList.remove("active");
 });
 
+// LOGIN
+
 const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");
 
@@ -28,8 +30,6 @@ const username = document.getElementById("register-username");
 const registerEmail = document.getElementById("register-email");
 const registerPassword = document.getElementById("register-password");
 const message = document.getElementById("message");
-
-// LOGIN
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();

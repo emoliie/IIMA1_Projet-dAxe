@@ -12,32 +12,33 @@ async function getData() {
     // On remplit toutes les données
     data.push({
       character,
-      html:createCard(character)
+      html: createCard(character),
     });
   }
 }
 
 function createCard(character) {
-// Crée une chaîne HTML pour stocker les noms des personnages
-  return `
-      <div class="item">
-        <h3>${character.name}</h3>
-        <img src="${character.image}" alt="${character.name}" />
-      </div>
-  `;
+  const div = document.createElement("div"); // crée un element div
+  div.classList.add("item"); // ajoute une classe à la div
+  div.onclick = function () {
+    showPopup(character); // quand on clique sur la div appelle la fonction showPopup()
+  };
+  div.innerHTML = `<h3>${character.name}</h3>
+        <img src="${character.image}" alt="${character.name}" />`;
+  return div; // Crée une chaîne HTML qui affiche les infos des personnages
 }
 
 function displayCharacters() {
   try {
     const charactersContainer = document.getElementById("characters-list");
     // Boucle à travers chaque personnage et ajoute son nom à la chaîne HTML
-    let html = "<div>"
-    activeCards.forEach((data) => {
-      html += data.html;
-    });
-    html += "</div>"
+    const div = document.createElement("div");
 
-    charactersContainer.innerHTML = html
+    activeCards.forEach(function (data) {
+      div.appendChild(data.html);
+    });
+
+    charactersContainer.appendChild(div);
 
     items = document.getElementsByClassName("item");
     loadShow();
@@ -116,7 +117,7 @@ next.onclick = function () {
 };
 
 prev.onclick = function () {
-  if (active + 1 >= 0) {
+  if (active - 1 >= 0) {
     active = active - 1;
   } else {
     active = active;
@@ -130,14 +131,18 @@ loadCards();
 // FILTRES
 
 function filterSelection(selectedHouse) {
-  activeCards = data.filter((item) => item.character.house == selectedHouse || selectedHouse === "all");
+  activeCards = data.filter(
+    (item) => item.character.house == selectedHouse || selectedHouse === "all"
+  );
   active = 0; // On remet la carte active à celle du début
   displayCharacters();
 }
 
 function filterSelectionByCharacterName(name) {
   // Compare l'input avec le nom de chaque personnage en minuscule (pour éviter de comparer des majuscules et minuscule)
-  activeCards = data.filter((item) => item.character.name.toLowerCase().includes(name.toLowerCase()));
+  activeCards = data.filter((item) =>
+    item.character.name.toLowerCase().includes(name.toLowerCase())
+  );
   active = 0; // On remet la carte active à celle du début
   displayCharacters();
 }
@@ -154,5 +159,45 @@ function initializeSearch() {
   });
 }
 
-// Assurez-vous que cette fonction est appelée pour initialiser l'écouteur d'événements
+// cette fonction est appelée pour initialiser l'écouteur d'événements
 initializeSearch();
+
+// POPUP
+
+function showPopup(character) {
+  const popup = document.getElementById("card-popup");
+  popup.innerHTML = createInfo(character);
+  popup.classList.toggle("show");
+  console.log("heyyy");
+}
+
+function createInfo(character) {
+  return `
+  <button class="close-btn">&times;</button>
+  <div class="character-info">
+    <div class="left">
+      <img src="${character.image}" alt="${character.name}" />
+    </div>
+    <div class="right">
+      <h3>${character.name}</h3>
+      <p>${character.eyes}</p>
+      <p>${character.hairs}</p>
+      <p>${character.birthday}</p>
+      <p>${character.blood}</p>
+      <p>${character.wand}</p>
+      <p>${character.patronus}</p>
+      <p>${character.role}</p>
+      <p>${character.house}</p>
+      <p>${character.actor}</p>
+    </div>
+  </div>
+  `;
+}
+
+const closeBtn = document.querySelector(".close-btn");
+
+closeBtn.onclick = () => {
+  const popup = document.getElementById("card-popup");
+  popup.classList.toggle("show");
+  console.log("cc");
+};

@@ -45,6 +45,9 @@
     </div>
   </section>
 
+  <div id="card-popup">
+  </div>
+
   <script src="../js/app.js"></script>
   <script src="../js/script-cards.js"></script>
 </body>
