@@ -292,14 +292,14 @@ body.active-popup .popup {
   cursor: pointer;
 }
 
-#card-popup .character-info {
+#card-popup #character-info {
   display: flex;
   height: 100%;
   justify-content: space-between;
 }
 
 
-#card-popup .character-info .left img {
+#card-popup #character-info .left img {
   height: 100%;
 }
 

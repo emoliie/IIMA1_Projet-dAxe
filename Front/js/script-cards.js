@@ -32,9 +32,11 @@ function displayCharacters() {
   try {
     const charactersContainer = document.getElementById("characters-list");
     // Boucle à travers chaque personnage et ajoute son nom à la chaîne HTML
+    charactersContainer.innerHTML = ""; 
     const div = document.createElement("div");
 
     activeCards.forEach(function (data) {
+      // console.log(data);
       div.appendChild(data.html);
     });
 
@@ -135,6 +137,7 @@ function filterSelection(selectedHouse) {
     (item) => item.character.house == selectedHouse || selectedHouse === "all"
   );
   active = 0; // On remet la carte active à celle du début
+  // console.log(activeCards);
   displayCharacters();
 }
 
@@ -166,15 +169,20 @@ initializeSearch();
 
 function showPopup(character) {
   const popup = document.getElementById("card-popup");
-  popup.innerHTML = createInfo(character);
+  const info = document.getElementById("character-info");
+  info.innerHTML = createInfo(character);
   popup.classList.toggle("show");
-  console.log("heyyy");
+  fetch("http://127.0.0.1:3000/houses", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ house: character.house }),
+  });
 }
 
 function createInfo(character) {
   return `
-  <button class="close-btn">&times;</button>
-  <div class="character-info">
     <div class="left">
       <img src="${character.image}" alt="${character.name}" />
     </div>
@@ -190,14 +198,12 @@ function createInfo(character) {
       <p>${character.house}</p>
       <p>${character.actor}</p>
     </div>
-  </div>
   `;
 }
 
 const closeBtn = document.querySelector(".close-btn");
+const popup = document.getElementById("card-popup");
 
-closeBtn.onclick = () => {
-  const popup = document.getElementById("card-popup");
-  popup.classList.toggle("show");
-  console.log("cc");
-};
+closeBtn.addEventListener("click", () => {
+  popup.classList.remove("show");
+});

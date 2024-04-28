@@ -20,19 +20,19 @@
     </div>
 
     <div class="filter">
-      <button class="button-value" onclick="filterSelection('all', this)">
+      <button class="button-value" onclick="filterSelection('all')">
         All
       </button>
-      <button class="button-value" onclick="filterSelection('Gryffindor', this)">
+      <button class="button-value" onclick="filterSelection('Gryffindor')">
         Gryffindor
       </button>
-      <button class="button-value" onclick="filterSelection('Slytherin', this)">
+      <button class="button-value" onclick="filterSelection('Slytherin')">
         Slytherin
       </button>
-      <button class="button-value" onclick="filterSelection('Ravenclaw', this)">
+      <button class="button-value" onclick="filterSelection('Ravenclaw')">
         Ravenclaw
       </button>
-      <button class="button-value" onclick="filterSelection('Hufflepuff', this)">
+      <button class="button-value" onclick="filterSelection('Hufflepuff')">
         Hufflepuff
       </button>
     </div>
@@ -46,6 +46,8 @@
   </section>
 
   <div id="card-popup">
+    <button class="close-btn">&times;</button>
+    <div id="character-info"></div>
   </div>
 
   <script src="../js/app.js"></script>
