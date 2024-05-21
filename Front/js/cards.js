@@ -1,38 +1,22 @@
-// IMPLEMENTATION API
-
-function fetchCharacters() {
-  return fetch("https://hp-api.lainocs.fr/characters/").then((response) =>
-    response.json()
-  );
-}
+import { createCard, createInfo, createSolidHeart, createRegularHeart } from "./utils/createHTML.js";
+import { getCharacters } from "./utils/service.js";
 
 async function getData() {
-  characters = await fetchCharacters();
+  characters = await getCharacters();
   for (const character of characters) {
     // On remplit toutes les données
     data.push({
       character,
-      html: createCard(character),
+      html: createCard(character, showPopup),
     });
   }
-}
-
-function createCard(character) {
-  const div = document.createElement("div"); // crée un element div
-  div.classList.add("item"); // ajoute une classe à la div
-  div.onclick = function () {
-    showPopup(character); // quand on clique sur la div appelle la fonction showPopup()
-  };
-  div.innerHTML = `<h3>${character.name}</h3>
-        <img src="${character.image}" alt="${character.name}" />`;
-  return div; // Crée une chaîne HTML qui affiche les infos des personnages
 }
 
 function displayCharacters() {
   try {
     const charactersContainer = document.getElementById("characters-list");
     // Boucle à travers chaque personnage et ajoute son nom à la chaîne HTML
-    charactersContainer.innerHTML = ""; 
+    charactersContainer.innerHTML = "";
     const div = document.createElement("div");
 
     activeCards.forEach(function (data) {
@@ -132,14 +116,42 @@ loadCards();
 
 // FILTRES
 
+const all = document.querySelector(".All");
+all.addEventListener("click", () => {
+  filterSelection("all");
+});
+
+const gryffindor = document.querySelector(".Gryffindor");
+gryffindor.addEventListener("click", () => {
+  filterSelection("Gryffindor");
+});
+
+const slytherin = document.querySelector(".Slytherin");
+slytherin.addEventListener("click", () => {
+  filterSelection("Slytherin");
+});
+
+const ravenclaw = document.querySelector(".Ravenclaw");
+ravenclaw.addEventListener("click", () => {
+  filterSelection("Ravenclaw");
+});
+
+const hufflepuff = document.querySelector(".Hufflepuff");
+hufflepuff.addEventListener("click", () => {
+  filterSelection("Hufflepuff");
+});
+
 function filterSelection(selectedHouse) {
   activeCards = data.filter(
+    // data = tableau, item = un element du tableau
     (item) => item.character.house == selectedHouse || selectedHouse === "all"
   );
   active = 0; // On remet la carte active à celle du début
   // console.log(activeCards);
   displayCharacters();
 }
+
+// RECHERCHE
 
 function filterSelectionByCharacterName(name) {
   // Compare l'input avec le nom de chaque personnage en minuscule (pour éviter de comparer des majuscules et minuscule)
@@ -150,8 +162,6 @@ function filterSelectionByCharacterName(name) {
   displayCharacters();
 }
 
-// RECHERCHE
-
 function initializeSearch() {
   const searchInput = document.getElementById("search-input");
 
@@ -161,44 +171,49 @@ function initializeSearch() {
     filterSelectionByCharacterName(text);
   });
 }
-
 // cette fonction est appelée pour initialiser l'écouteur d'événements
 initializeSearch();
+
+
 
 // POPUP
 
 function showPopup(character) {
+  // fonction servant à afficher les infos des cartes dans le popup
   const popup = document.getElementById("card-popup");
   const info = document.getElementById("character-info");
   info.innerHTML = createInfo(character);
-  popup.classList.toggle("show");
+  popup.classList.toggle("show"); // fait apparaitre le popup qui est cachée
+  
+
   fetch("http://127.0.0.1:3000/houses", {
+    // va modifier la maison qui est stockée dans l'API avec la methode PATCH
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ house: character.house }),
   });
-}
 
-function createInfo(character) {
-  return `
-    <div class="left">
-      <img src="${character.image}" alt="${character.name}" />
-    </div>
-    <div class="right">
-      <h3>${character.name}</h3>
-      <p>${character.eyes}</p>
-      <p>${character.hairs}</p>
-      <p>${character.birthday}</p>
-      <p>${character.blood}</p>
-      <p>${character.wand}</p>
-      <p>${character.patronus}</p>
-      <p>${character.role}</p>
-      <p>${character.house}</p>
-      <p>${character.actor}</p>
-    </div>
-  `;
+  const likeBtn = document.getElementById("like-btn");
+  const regularHeart = document.querySelector(".fa-regular");
+  
+
+  if (regularHeart) {
+    regularHeart.addEventListener("click", () => {
+      likeBtn.innerHTML = createSolidHeart();
+    });
+  } 
+
+  const solidHeart = document.querySelector(".fa-solid");
+  
+  if (solidHeart) {
+    console.log(solidHeart)
+    solidHeart.addEventListener("click", () => {
+      likeBtn.innerHTML = createRegularHeart();
+    });
+  }
+
 }
 
 const closeBtn = document.querySelector(".close-btn");

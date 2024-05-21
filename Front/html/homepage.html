@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/nav-style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/homepage-style.css" />
+    <title>Harry Potter</title>
+  </head>
+
+  <body>
+    <nav>
+      <a href="homepage.html"
+        ><img src="../images/logo.png" alt="harry potter logo" class="logo"
+      /></a>
+      <ul class="list" id="burger-menu">
+        <li><a href="homepage.html" class="menu">Home</a></li>
+        <li><a href="cards.html" class="menu">Cards</a></li>
+        <li><a href="booster.html" class="menu">Booster</a></li>
+        <li><a href="login.html" class="menu">My Account</a></li>
+      </ul>
+      <div class="button-section" id="button" onclick="burgerMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </nav>
+
+    <section class="homepage">
+      <div class="container">
+        <h1>The Universe of Harry Potter</h1>
+        <p>
+          Embark on a magical journey with Wizarding Wonders, your go-to
+          destination for all things Harry Potter card collection and exchange!
+          This year, our mission is to bring you a unique platform where
+          enthusiasts from around the world can register, delve into the
+          wizarding universe, and 'unwrap' virtual booster packs of enchanting
+          Harry Potter cards. Join us in building a vibrant community where the
+          magic of collecting and trading these spellbinding cards comes to
+          life.
+        </p>
+        <div class="buttons">
+          <a href="cards.html">Discover</a>
+          <a href="login.html">Join</a>
+        </div>
+      </div>
+      <img
+        id="homepage-img"
+        src="../images/harry-potter.png"
+        alt="harry potter"
+      />
+
+      <button id="open-popup">
+        <i class="fa-solid fa-hat-wizard" id="button-icon"></i>
+      </button>
+    </section>
+
+    <div class="popup">
+      <button class="close-btn">&times;</button>
+
+      <h2>Exchange Cards</h2>
+      <div class="users">
+        <label id="user-select">Choose a user to exchange with :</label>
+        <select name="users" class="selector" id="users-list">
+          <option value="">--Please choose a user--</option>
+        </select>
+      </div>
+
+      <div class="cards">
+        <label id="card-select">Choose a card you'd like to exchange :</label>
+        <select name="cards" class="selector" id="cards-list">
+          <option value="">--Please choose a card--</option>
+        </select>
+      </div>
+
+      <h4 id="message"></h4>
+      <button id="exchange-btn">Exchange</button>
+    </div>
+
+    <script src="../js/menu.js"></script>
+    <script src="../js/popup.js"></script>
+    <script type="module" src="../js/exchange.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5a6fe80c93.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

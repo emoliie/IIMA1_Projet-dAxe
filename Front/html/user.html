@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/user-style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/nav-style.css" />
+    <title>My Profile</title>
+  </head>
+
+  <body>
+    <nav>
+      <a href="homepage.html"
+        ><img src="../images/logo.png" alt="harry potter logo" class="logo"
+      /></a>
+      <ul class="list" id="burger-menu">
+        <li><a href="homepage.html" class="menu">Home</a></li>
+        <li><a href="cards.html" class="menu">Cards</a></li>
+        <li><a href="booster.html" class="menu">Booster</a></li>
+        <li><a href="login.html" class="menu">My Account</a></li>
+      </ul>
+      <div class="button-section" id="button" onclick="burgerMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </nav>
+
+    <section class="user">
+      <div class="user-profile">
+        <div class="left">
+          <img src="../images/user-pfp.jpeg" alt="user" />
+          <div id="user-info">
+            <h2>Username</h2>
+            <p>Email</p>
+          </div>
+          <button id="sign-out">Sign Out</button>
+        </div>
+        <div class="right">
+          <!-- <div class="liked-cards">
+            <h2>Liked Cards</h2>
+            <div id="liked-cards-list"></div>
+          </div> -->
+
+          <div class="owned-cards">
+            <h2>Owned Cards</h2>
+
+            <select name="house" id="houses-lis">
+              <option value="all">All</option>
+              <option value="gryffindor">Gryffindor</option>
+              <option value="slytherin">Slytherin</option>
+              <option value="ravenclaw">Ravenclaw</option>
+              <option value="hufflepuff">Hufflepuff</option>
+            </select>
+            <ul class="carousel" id="owned-cards-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/menu.js"></script>
+    <script type="module" src="../js/user.js"></script>
+    <script src="../js/carousel.js"></script>
+  </body>
+</html>

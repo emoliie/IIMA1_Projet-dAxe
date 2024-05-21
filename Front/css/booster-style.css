@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+
+body,
+html,
+:root {
+  height: 100%;
+}
+
+body {
+  background: #1e1e2e;
+  color: white;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.booster-section {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  gap: 5rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.container {
+  width: 14vw;
+  /* height: 300px; */
+  aspect-ratio: 5 / 8;
+  min-width: 190px;
+  perspective: 800px; /* fonctionne pas */
+}
+
+.flipped > .card {
+  transform: rotateY(-180deg);
+  transition: transform 1500ms;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  /* transition: transform 1500ms; */
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+  position: absolute;
+  backface-visibility: hidden; /* fonctionne pas */
+}
+
+.back {
+  background-image: url(../images/card-back.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.front {
+  background-color: #3a3a3a;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.front h3 {
+  font-size: 20px;
+  font-weight: 900;
+  position: absolute;
+  bottom: 10px;
+  align-self: center;
+  text-align: center;
+}
+
+.front img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+#draw-btn {
+  padding: 0.7rem 3rem;
+  border-radius: 5rem;
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+#draw-btn:hover {
+  transform: scale(1.1);
+}

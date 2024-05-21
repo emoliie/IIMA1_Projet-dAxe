@@ -1,7 +1,10 @@
+import { login, register } from "./utils/service.js";
+
 const token = localStorage.getItem("token");
 
 if (token) {
-  window.location.href = "http://127.0.0.1/PROJET%20D'AXE%20CDI/php/user.php";
+  window.location.href =
+    "http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/user.html";
 }
 
 // ANIMATION
@@ -29,24 +32,17 @@ const loginPassword = document.getElementById("login-password");
 const username = document.getElementById("register-username");
 const registerEmail = document.getElementById("register-email");
 const registerPassword = document.getElementById("register-password");
-const message = document.getElementById("message");
+const registerMessage = document.getElementById("register-message");
+const loginMessage = document.getElementById("login-message");
 
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const response = await fetch("http://127.0.0.1:3000/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: loginEmail.value,
-      password: loginPassword.value,
-    }),
-  });
+  const response = await login(loginEmail.value, loginPassword.value);
 
   if (response.status !== 200) {
-    alert("Connection failed");
+    //alert("Connection failed");
+    loginMessage.innerHTML = "<p>Failed to connect</p>";
     return;
   }
 
@@ -56,30 +52,27 @@ loginForm.addEventListener("submit", async (event) => {
 
   localStorage.setItem("token", token);
 
-  window.location.href = "http://127.0.0.1/PROJET%20D'AXE%20CDI/php/user.php";
+  window.location.href =
+    "http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/user.html";
 });
 
 // REGISTER
+
 registerForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const response = await fetch("http://127.0.0.1:3000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: registerEmail.value,
-      name: username.value,
-      password: registerPassword.value,
-    }),
-  });
+  const response = await register(
+    registerEmail.value,
+    username.value,
+    registerPassword.value
+  );
 
   if (response.status !== 201) {
-    alert("Failed to register");
+    //alert("Failed to register");
+    registerMessage.innerHTML = "<p>Failed to register</p>";
     return;
   } else {
-    message.innerHTML = "<p> User registered </p>";
+    registerMessage.innerHTML = "<p> User registered </p>";
   }
 
   const result = await response.json();

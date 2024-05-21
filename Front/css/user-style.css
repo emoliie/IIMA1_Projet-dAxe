@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+
+body,
+html,
+:root {
+  height: 100%;
+}
+
+body {
+  background: #1e1e2e;
+  color: white;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+/*========== PROFILE USER ==========*/
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85vh;
+}
+
+.user .user-profile {
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.35);
+  position: relative;
+  width: 70vw;
+  height: 70vh;
+  display: flex;
+}
+
+.user .user-profile .left {
+  width: 35%;
+  background: linear-gradient(to right, #24273a, #363a4f);
+  padding: 50px 25px;
+  text-align: center;
+  color: #fff;
+  border-radius: 30px 0 0 30px;
+}
+
+.user .user-profile .left img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.user .user-profile .left button {
+  width: 100px;
+  padding: 0.5rem 0;
+  border-radius: 5rem;
+  outline: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: black;
+  border: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.user .user-profile .left button:hover {
+  transform: scale(1.1);
+}
+
+.user .user-profile .right {
+  width: 65%;
+  padding: 50px 25px;
+  color: black;
+}
+
+.user .user-profile .right .owned-cards {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.user .user-profile .right .owned-cards .carousel {
+  /* height: 100%; */
+  /* width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; */
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.user .user-profile .right .owned-cards .carousel .card {
+  background-color: #181825;
+  /* width: 14vw; */
+  aspect-ratio: 5/8;
+  min-height: fit-content;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  position: relative;
+  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+}
+
+.user .user-profile .right .owned-cards .carousel .card img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.user .user-profile .right .owned-cards .carousel .card h3 {
+  font-size: 20px;
+  font-weight: 900;
+  position: absolute;
+  bottom: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+/*========== RESPONSIVE ===========*/
+
+@media screen and (max-width: 1100px) {
+  .user .user-profile {
+    width: 80vw;
+    min-width: 80vw;
+  }
+
+  .user .user-profile .left img {
+    height: 120px;
+    width: 120px;
+  }
+
+  .user .user-profile .right .owned-cards .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  #user-info p {
+    font-size: 0.7rem;
+  }
+
+  #sign-out {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .user .user-profile {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .user .user-profile .left {
+    width: 100%;
+    height: 30%;
+    border-radius: 30px 30px 0 0;
+    padding: 25px;
+  }
+
+  .user .user-profile .left img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 0;
+  }
+
+  .user .user-profile .right {
+    width: 100%;
+    height: 70%;
+    padding: 25px 25px;
+  }
+
+  .user .user-profile .right .owned-cards {
+    gap: 1rem;
+  }
+
+  .user .user-profile .right .owned-cards .carousel {
+    grid-auto-columns: calc(100% - 100px);
+    gap: 0;
+  }
+
+  .user .user-profile .right .owned-cards .carousel .card {
+    width: 80%;
+  }
+
+  .user .user-profile .right .owned-cards .carousel .card h3 {
+    font-size: 5vw;
+  }
+}
