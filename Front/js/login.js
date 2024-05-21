@@ -48,6 +48,8 @@ loginForm.addEventListener("submit", async (event) => {
 
   const result = await response.json();
 
+  localStorage.setItem("email", loginEmail.value);
+
   const token = result.token;
 
   localStorage.setItem("token", token);
@@ -55,6 +57,14 @@ loginForm.addEventListener("submit", async (event) => {
   window.location.href =
     "http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/user.html";
 });
+
+const storedEmail = localStorage.getItem('email'); // obtient le mail stocké dans le localstorage
+
+if (storedEmail) {
+  loginEmail.value = storedEmail;
+} else {
+  console.log("No email found in localstorage")
+}
 
 // REGISTER
 

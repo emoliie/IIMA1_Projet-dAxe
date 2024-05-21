@@ -8,7 +8,7 @@ function burgerMenu(x) {
 
 //console.log(button);
 button.addEventListener("click", function () {
-  console.log("click");
+  //console.log("click");
 
   let burger_menu = document.querySelector("#burger-menu");
   burger_menu.classList.toggle("open");

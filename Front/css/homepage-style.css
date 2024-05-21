@@ -81,7 +81,7 @@ h2 {
   transition: 0.2s ease-in-out;
 }
 
-.buttons a button:hover,
+.buttons a:hover,
 #exchange-btn:hover {
   transform: scale(1.1);
 }
