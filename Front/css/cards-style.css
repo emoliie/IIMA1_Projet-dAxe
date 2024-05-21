@@ -190,7 +190,6 @@
 
 #card-popup #character-info .right .bottom a {
   color: var(--primary-color);
-  transition: var(--main-transition);
 }
 
 #card-popup #character-info .right .bottom a:hover {

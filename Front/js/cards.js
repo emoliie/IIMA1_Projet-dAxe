@@ -1,4 +1,9 @@
-import { createCard, createInfo, createSolidHeart, createRegularHeart } from "./utils/createHTML.js";
+import {
+  createCard,
+  createInfo,
+  createSolidHeart,
+  createRegularHeart,
+} from "./utils/createHTML.js";
 import { getCharacters } from "./utils/service.js";
 
 async function getData() {
@@ -114,7 +119,6 @@ prev.onclick = function () {
 
 loadCards();
 
-
 // FILTRES
 
 const all = document.querySelector(".All");
@@ -152,7 +156,6 @@ function filterSelection(selectedHouse) {
   displayCharacters();
 }
 
-
 // RECHERCHE
 
 function filterSelectionByCharacterName(name) {
@@ -176,16 +179,14 @@ function initializeSearch() {
 // cette fonction est appelée pour initialiser l'écouteur d'événements
 initializeSearch();
 
-
 // POPUP
 
 function showPopup(character) {
   // fonction servant à afficher les infos des cartes dans le popup
   const popup = document.getElementById("card-popup");
   const info = document.getElementById("character-info");
-  info.innerHTML = createInfo(character);
+  info.innerHTML = createInfo(character,liked);
   popup.classList.toggle("show"); // fait apparaitre le popup qui est cachée
-  
 
   fetch("http://127.0.0.1:3000/houses", {
     // va modifier la maison qui est stockée dans l'API avec la methode PATCH
@@ -197,25 +198,32 @@ function showPopup(character) {
   });
 
   const likeBtn = document.getElementById("like-btn");
-  const regularHeart = document.querySelector(".fa-regular");
-  
 
-  if (regularHeart) {
-    regularHeart.addEventListener("click", () => {
-      likeBtn.innerHTML = createSolidHeart();
-    });
-  } 
-
-  const solidHeart = document.querySelector(".fa-solid");
-  
-  if (solidHeart) {
-    console.log(solidHeart)
-    solidHeart.addEventListener("click", () => {
-      likeBtn.innerHTML = createRegularHeart();
-    });
+  const token = localStorage.getItem("token");
+  if (!token) {
+    likeBtn.remove();
+    return;
   }
 
+  const regularHeart = document.querySelector(".fa-regular");
+  const solidHeart = document.querySelector(".fa-solid");
+
+  likeBtn.addEventListener("click", () => {
+    const faHeart = document.querySelector(".fa-heart");
+    // console.log(faHeart)
+    if (liked) {
+      faHeart.classList.remove("fa-solid");
+      faHeart.classList.add("fa-regular");
+    } else {
+      faHeart.classList.remove("fa-regular");
+      faHeart.classList.add("fa-solid");
+    }
+
+    liked = !liked;
+  });
 }
+
+let liked = false;
 
 const closeBtn = document.querySelector(".close-btn");
 const popup = document.getElementById("card-popup");

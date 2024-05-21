@@ -76,7 +76,7 @@ export function createCharacterInformation(character) {
 }
 
 // Retourne une chaîne représentant du HTML
-export function createInfo(character) {
+export function createInfo(character,liked) {
   return `
       <div class="left">
         <img src="${character.image}" alt="${character.name}" />
@@ -90,20 +90,19 @@ export function createInfo(character) {
         <div class="bottom">
           <a id="learn-more" href="http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/character.html?slug=${character.slug}">Learn More &gt;</a>
           <div class="like" id="like-btn">
-            <i class="fa-regular fa-heart"></i>
+            <i class="${liked ? "fa-solid" : "fa-regular"} fa-heart"></i> 
           </div>
-        
         </div>
       </div>
     `;
-}
+} // ternary operator : condition ? true : false
 
 export function createSolidHeart() {
   return `<i class="fa-solid fa-heart" style="color: #eee;"></i>`;
 }
 
 export function createRegularHeart() {
-  return `<i class="fa-solid fa-heart"></i>`;
+  return `<i class="fa-regular fa-heart"></i>`;
 }
 
 export function createUserInfo(user) {

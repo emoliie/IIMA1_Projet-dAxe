@@ -8,7 +8,8 @@ section {
 }
 
 .character {
-  width: 70%;
+  width: 60vw;
+  height: 70vh;
   display: flex;
   justify-content: center;
   background-color: var(--secondary-color);
@@ -24,7 +25,6 @@ section {
 
 .character .left img {
   height: 100%;
-  width: 80%;
   object-fit: cover;
 }
 
