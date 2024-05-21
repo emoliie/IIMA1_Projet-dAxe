@@ -114,6 +114,7 @@ prev.onclick = function () {
 
 loadCards();
 
+
 // FILTRES
 
 const all = document.querySelector(".All");
@@ -151,6 +152,7 @@ function filterSelection(selectedHouse) {
   displayCharacters();
 }
 
+
 // RECHERCHE
 
 function filterSelectionByCharacterName(name) {
@@ -173,7 +175,6 @@ function initializeSearch() {
 }
 // cette fonction est appelée pour initialiser l'écouteur d'événements
 initializeSearch();
-
 
 
 // POPUP

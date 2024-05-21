@@ -1,27 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-}
-
-body,
-html,
-:root {
-  height: 100%;
-}
-
-body {
-  background: #1e1e2e;
-  color: white;
-}
-
-h2 {
-  font-weight: 600;
-}
+@import "./global-variables.css";
 
 .booster-section {
   width: 100vw;
@@ -65,8 +42,8 @@ h2 {
 .back {
   height: 100%;
   width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+  border-radius: var(--card-radius);
+  box-shadow: var(--white-box-shadow);
   position: absolute;
   backface-visibility: hidden; /* fonctionne pas */
 }
@@ -78,7 +55,7 @@ h2 {
 }
 
 .front {
-  background-color: #3a3a3a;
+  background-color: var(--secondary-color);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
@@ -99,7 +76,7 @@ h2 {
 .front img {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   object-fit: cover;
 }
 
@@ -110,10 +87,10 @@ h2 {
   font-size: 15px;
   font-weight: 400;
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: var(--main-transition);
 }
 
 #draw-btn:hover {

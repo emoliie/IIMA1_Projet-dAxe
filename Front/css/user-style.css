@@ -1,28 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-  list-style: none;
-}
-
-body,
-html,
-:root {
-  height: 100%;
-}
-
-body {
-  background: #1e1e2e;
-  color: white;
-}
-
-h2 {
-  font-weight: 600;
-}
+@import "./global-variables.css";
 
 /*========== PROFILE USER ==========*/
 
@@ -70,7 +46,7 @@ h2 {
   color: black;
   border: white;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: var(--main-transition);
   margin-top: 20px;
 }
 

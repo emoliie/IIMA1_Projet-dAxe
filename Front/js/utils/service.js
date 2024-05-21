@@ -7,6 +7,11 @@ export async function getCharacters() {
   return await response.json();
 }
 
+export async function getCharacterFromSlug(slug) {
+  const response = await fetch(`https://hp-api.lainocs.fr/characters/${slug}`)
+  return await response.json();
+}
+
 export async function getProfile() { // on obtient le profile du user connecté avec ses cartes possédées
   const token = localStorage.getItem("token"); // on récupere le token qu'on retrouve dans le localstorage
 

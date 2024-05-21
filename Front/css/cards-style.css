@@ -1,29 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-}
-
-body,
-html,
-:root {
-  height: 100%;
-}
-
-body {
-  background: #1e1e2e;
-  color: white;
-}
-
-h2 {
-  font-weight: 600;
-}
-
-/*========== CARDS ==========*/
+@import "./global-variables.css";
 
 .main {
   display: flex;
@@ -137,13 +112,13 @@ h2 {
 #card-popup {
   visibility: hidden;
   position: absolute;
-  background: #494d64;
+  background: var(--secondary-color);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
   width: 40vw;
-  /* height: 400px; */
+  height: 500px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.1);
@@ -151,7 +126,7 @@ h2 {
 
 .show {
   visibility: visible !important;
-  animation: fadeIn 1s; 
+  animation: fadeIn 1s;
 }
 
 /* body.show .main {
@@ -187,7 +162,7 @@ h2 {
 
 #card-popup #character-info .left img {
   height: 100%;
-  width: 90%;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -196,18 +171,35 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   padding: 5% 0;
+  width: 40%;
 }
 
-#card-popup #character-info .right .like {
-  display: flex;
-  justify-content: flex-end;
+#card-popup #character-info .right .info {
+  padding-top: 30%;
+
 }
 
-#card-popup #character-info .right .like .fa-heart {
+#card-popup #character-info .right .info h3 {
   font-size: 1.5rem;
 }
 
+#card-popup #character-info .right .bottom {
+  display: flex;
+  justify-content: space-between;
+}
 
+#card-popup #character-info .right .bottom a {
+  color: var(--primary-color);
+  transition: var(--main-transition);
+}
+
+#card-popup #character-info .right .bottom a:hover {
+  color: var(--main-bg-color);
+}
+
+#card-popup #character-info .right .bottom .like .fa-heart {
+  font-size: 1.5rem;
+}
 
 /*========== RESPONSIVE ===========*/
 

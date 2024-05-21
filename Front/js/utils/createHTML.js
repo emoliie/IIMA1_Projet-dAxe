@@ -16,18 +16,61 @@ export function createCard(character, callback) {
 }
 
 export function createCharacterInformation(character) {
+
   return `
-        <div class="character-info">
-          <h3>${character.name}</h3>
-          <p>${character.eyes}</p>
-          <p>${character.hairs}</p>
-          <p>${character.birthday}</p>
-          <p>${character.blood}</p>
-          <p>${character.wand}</p>
-          <p>${character.patronus}</p>
-          <p>${character.role}</p>
-          <p>${character.house}</p>
-          <p>${character.actor}</p>
+        <div class="left">
+          <img src="${character.image}" alt="${character.name}" />
+        </div>
+        <div class="right">
+          <div class="character-info">
+            <h1>${character.name}</h1>
+
+              <div class="info">
+                <p class="key">Eye color:</p>
+                <p class="value">${character.eyes}</p>
+              </div>
+            
+              <div class="info">
+                <p class="key">Hair Color:</p>
+                <p class="value">${character.hairs}</p>
+              </div>
+            
+              <div class="info">
+                <p class="key">Birthday:</p>
+                <p class="value">${character.birthday}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">Blood:</p>
+                <p class="value">${character.blood}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">Wand:</p>
+                <p class="value">${character.wand}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">Patronus:</p>
+                <p class="value">${character.patronus}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">Role:</p>
+                <p class="value">${character.role}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">House:</p>
+                <p class="value">${character.house}</p>
+              </div>
+              
+              <div class="info">
+                <p class="key">Actor:</p>
+                <p class="value">${character.actor}</p>
+              </div>
+              
+          </div>
         </div>
   `;
 }
@@ -39,9 +82,17 @@ export function createInfo(character) {
         <img src="${character.image}" alt="${character.name}" />
       </div>
       <div class="right">
-        ${createCharacterInformation(character)}
-        <div class="like" id="like-btn">
-          <i class="fa-regular fa-heart"></i>
+        <div class="info" id="info">
+          <h3>${character.name}</h3>
+          <p>${character.house}
+        </div>
+
+        <div class="bottom">
+          <a id="learn-more" href="http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/character.html?slug=${character.slug}">Learn More &gt;</a>
+          <div class="like" id="like-btn">
+            <i class="fa-regular fa-heart"></i>
+          </div>
+        
         </div>
       </div>
     `;
@@ -58,22 +109,10 @@ export function createRegularHeart() {
 export function createUserInfo(user) {
   return `
     <h2>${user.name}</h2>
-    <p>${user.email}</p>
+    <p>${user.email}
   `;
 }
 
-/**
- * Permet d'obtenir le HTML suivant:
- *  <div class="container">
-      <div class="card">
-        <div class="front"></div>
-        <div class="back">
-          <h1>Back of Card</h1>
-          <p>Additional info on the back of the card</p>
-        </div>
-      </div>
-    </div>
- */
 export function createRandomCard() {
   // Crée l'élément <div class="container"> </div>
   const container = document.createElement("div");
