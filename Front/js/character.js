@@ -13,7 +13,10 @@ if (!param) {
 async function loadCharacter(param) {
   const data = await getCharacterFromSlug(param);
   const characterPage = document.getElementById("character");
-  characterPage.innerHTML=createCharacterInformation(data)
+  const title = document.getElementById("title");
+
+  characterPage.innerHTML = createCharacterInformation(data);
+  title.innerHTML = `${data.name}`;
 }
 
 loadCharacter(param);
