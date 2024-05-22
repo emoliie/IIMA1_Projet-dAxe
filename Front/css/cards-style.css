@@ -22,9 +22,9 @@
   background-color: transparent;
   width: 40%;
   border: transparent;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--primary-color);
   padding: 1em 0.3em;
-  color: white;
+  color: var(--primary-color);
 }
 
 #search-container button,
@@ -37,8 +37,8 @@
   font-size: 15px;
   font-weight: 400;
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   cursor: pointer;
 }
 
@@ -55,19 +55,19 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 370px;
+  height: 400px;
   overflow: hidden;
 }
 
 .item {
   position: absolute;
-  width: 270px;
-  height: 370px;
+  width: 300px;
+  height: 400px;
   text-align: justify;
-  background-color: #181825;
-  border-radius: 20px;
+  background-color: var(--card-color);
+  border-radius: var(--card-radius);
   transition: 0.5s;
-  left: calc(50% - 110px);
+  left: calc(50% - 150px);
   top: 0;
   background-size: cover;
   background-position: center;
@@ -84,7 +84,7 @@
 
 .item img {
   width: 270px;
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   object-fit: cover;
 }
 
@@ -92,7 +92,7 @@
 #prev {
   position: absolute;
   top: 40%;
-  color: #fff;
+  color: var(--primary-color);
   border: none;
   font-size: 50px;
   font-weight: 500;
@@ -121,7 +121,7 @@
   height: 500px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--black-box-shadow);
 }
 
 .show {
@@ -140,8 +140,8 @@
   right: 10px;
   width: 20px;
   height: 20px;
-  background: #eee;
-  color: #111;
+  background: var(--primary-color);
+  color: var(--nav-color);
   border: none;
   outline: none;
   border-radius: 50%;
@@ -208,13 +208,13 @@
   }
 
   #card-popup {
-    width: 60vw;
+    width: 70vw;
   }
 }
 
 @media screen and (max-width: 600px) {
   .main {
-    padding: 5vh 0;
+    padding: 5vh 0 0 0;
   }
 
   #search-container {
@@ -223,6 +223,7 @@
 
   #card-popup {
     width: 80vw;
+    height: auto;
   }
 
   #card-popup #character-info {
@@ -232,4 +233,16 @@
   #card-popup #character-info .left {
     width: 100%;
   }
+
+  #card-popup #character-info .right {
+    width: 100%;
+  }
+
+  #card-popup #character-info .right .info {
+    padding-top: 0;
+  }
+
+  #card-popup #character-info .right .bottom {
+    padding-top: 1rem;
+}
 }

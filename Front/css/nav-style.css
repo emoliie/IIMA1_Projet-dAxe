@@ -7,6 +7,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background: var(--nav-color);
+  box-shadow: var(--black-box-shadow);
 }
 
 nav .logo {
@@ -34,12 +35,12 @@ nav .menu {
 
 nav ul li:nth-child(4) a {
   background: var(--primary-color);
-  color: #1e1e2e;
+  color: var(--main-bg-color)
 }
 
 nav .menu:hover {
   background: var(--primary-color);
-  color: #1e1e2e;
+  color: var(--main-bg-color)
 }
 
 .button-section {

@@ -13,7 +13,7 @@
 .box {
   background-color: white;
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.35);
+  box-shadow: var(--white-box-shadow);
   position: relative;
   overflow: hidden;
   max-width: 768px;
@@ -22,8 +22,8 @@
 }
 
 .box button {
-  background-color: #1e1e2e;
-  color: #fff;
+  background-color: var(--main-bg-color);
+  color: var(--primary-color);
   text-transform: uppercase;
   font-weight: 600;
   padding: 0.7rem 0;
@@ -32,7 +32,7 @@
   outline: none;
   font-size: 15px;
   font-weight: 400;
-  border: 1px solid white;
+  border: 1px solid var(--primary-color);
   cursor: pointer;
   transition: var(--main-transition);
   margin-top: 20px;
@@ -54,7 +54,7 @@
 }
 
 .box input {
-  background-color: #eee;
+  background-color: var(--primary-color);
   border: none;
   margin: 8px 0;
   padding: 10px 15px;
@@ -65,7 +65,7 @@
 }
 
 .box h2 {
-  color: black;
+  color: var(--nav-color);
 }
 
 .form-container {
@@ -130,10 +130,10 @@
 }
 
 .toggle {
-  background-color: #1e1e2e;
+  background-color: var(--main-bg-color);
   height: 100%;
-  background: linear-gradient(to right, #313244, #1e1e2e);
-  color: #fff;
+  background: linear-gradient(to right, #313244, var(--main-bg-color));
+  color: var(--primary-color);
   position: relative;
   left: -100%;
   height: 100%;
@@ -180,12 +180,12 @@
 }
 
 .toggle h2 {
-  color: white;
+  color: var(--primary-color);
 }
 
 #register-message p,
 #login-message p {
-  color: #10101a;
+  color: var(--nav-color);
   font-size: 10px;
 }
 

@@ -43,7 +43,7 @@
   height: 100%;
   width: 100%;
   border-radius: var(--card-radius);
-  box-shadow: var(--white-box-shadow);
+  box-shadow: var(--black-box-shadow);
   position: absolute;
   backface-visibility: hidden; /* fonctionne pas */
 }

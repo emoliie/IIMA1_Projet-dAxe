@@ -10,9 +10,9 @@
 }
 
 .user .user-profile {
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.35);
+  box-shadow: var(--white-box-shadow);
   position: relative;
   width: 70vw;
   height: 70vh;
@@ -24,7 +24,7 @@
   background: linear-gradient(to right, #24273a, #363a4f);
   padding: 50px 25px;
   text-align: center;
-  color: #fff;
+  color: var(--primary-color);
   border-radius: 30px 0 0 30px;
 }
 
@@ -43,8 +43,8 @@
   outline: none;
   font-size: 15px;
   font-weight: 400;
-  color: black;
-  border: white;
+  color: var(--nav-color);
+  border: var(--primary-color);
   cursor: pointer;
   transition: var(--main-transition);
   margin-top: 20px;
@@ -57,7 +57,7 @@
 .user .user-profile .right {
   width: 65%;
   padding: 50px 25px;
-  color: black;
+  color: var(--nav-color);
 }
 
 .user .user-profile .right .owned-cards {
@@ -70,14 +70,6 @@
 }
 
 .user .user-profile .right .owned-cards .carousel {
-  /* height: 100%; */
-  /* width: 100%;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem; */
-
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: calc((100% / 3) - 12px);
@@ -86,23 +78,23 @@
 }
 
 .user .user-profile .right .owned-cards .carousel .card {
-  background-color: #181825;
+  background-color: var(--card-color);
   /* width: 14vw; */
   aspect-ratio: 5/8;
   min-height: fit-content;
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   gap: 5rem;
   position: relative;
-  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+  box-shadow: var(--black-box-shadow);
 }
 
 .user .user-profile .right .owned-cards .carousel .card img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: var(--card-radius);
   object-fit: cover;
 }
 
@@ -111,7 +103,7 @@
   font-weight: 900;
   position: absolute;
   bottom: 10px;
-  color: #fff;
+  color: var(--primary-color);
   text-align: center;
 }
 

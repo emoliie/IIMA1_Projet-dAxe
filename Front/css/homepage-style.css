@@ -29,7 +29,7 @@
 }
 
 .container p {
-  color: #ffffffdc;
+  color: var(--primary-color);
 }
 
 #homepage-img {
@@ -52,8 +52,8 @@
   font-size: 15px;
   font-weight: 400;
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   cursor: pointer;
   transition: var(--main-transition);
 }
@@ -74,7 +74,7 @@
   cursor: pointer;
   width: 70px;
   height: 70px;
-  border: solid 1px white;
+  border: solid 1px var(--primary-color);
 }
 
 .fa-solid {
@@ -88,9 +88,9 @@
   transform: translate(-50%, -50%);
   width: 40vw;
   padding: 50px;
-  background: #494d64;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.1);
+  background: var(--secondary-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--black-box-shadow);
   margin-top: -25px;
   opacity: 0;
   transition: top 0ms ease-in-out 300ms, opacity 300ms ease-in-out,
@@ -107,8 +107,8 @@
   right: 10px;
   width: 20px;
   height: 20px;
-  background: #eee;
-  color: #111;
+  background: var(--primary-color);
+  color: var(--nav-color);
   border: none;
   outline: none;
   border-radius: 50%;
@@ -139,8 +139,8 @@ body.active-popup .popup {
 }
 
 #exchange-btn {
-  background-color: #fff;
-  color: #1e1e2e;
+  background-color: var(--primary-color);
+  color: var(--main-bg-color)
 
 }
 
@@ -177,7 +177,7 @@ body.active-popup .popup {
     min-height: 60vh;
   }
 
-  section .container {
+  .homepage .container {
     width: 90%;
     text-align: center;
   }
@@ -194,7 +194,8 @@ body.active-popup .popup {
 
   #open-popup {
     right: -25px;
-    bottom: 130px;
+    bottom: 60px;
+    top: auto;
   }
 
   .popup {
