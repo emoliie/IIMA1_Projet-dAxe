@@ -17,6 +17,8 @@ export function createCard(character, callback) {
 
 export function createCharacterInformation(character) {
 
+  const birthdate = new Date(character.birthday).toISOString().split('T')[0];
+ 
   return `
         <div class="left">
           <img src="${character.image}" alt="${character.name}" />
@@ -37,7 +39,7 @@ export function createCharacterInformation(character) {
             
               <div class="info">
                 <p class="key">Birthday:</p>
-                <p class="value">${character.birthday}</p>
+                <p class="value">${birthdate}</p>
               </div>
               
               <div class="info">
