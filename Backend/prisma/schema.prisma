@@ -1,0 +1,36 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id            Int       @id @default(autoincrement())
+    email         String    @unique
+    name          String?
+    password      String
+    canDraw       Boolean   @default(true)
+    remainingDraw Int       @default(5)
+    lastDraw      DateTime? 
+    createdAt     DateTime  @default(now())
+}
+
+model House {
+    id        Int      @id @default(autoincrement())
+    house     String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model OwnedCard {
+    id     Int    @id @default(autoincrement())
+    userid Int
+    slug   String
+    name   String
+    image  String
+}
+
+// migration en sql dans le dossier migrations

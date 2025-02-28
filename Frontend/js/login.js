@@ -1,10 +1,9 @@
-import { login, register } from "./utils/service.js";
+import { baseUrl, login, register } from "./utils/service.js";
 
 const token = localStorage.getItem("token");
 
 if (token) {
-  window.location.href =
-    "http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/user.html";
+  window.location.href = `${baseUrl}:5500/Frontend/pages/user.html`;
 }
 
 // ANIMATION
@@ -54,16 +53,15 @@ loginForm.addEventListener("submit", async (event) => {
 
   localStorage.setItem("token", token);
 
-  window.location.href =
-    "http://127.0.0.1/PROJET%20D'AXE%20CDI/Front/html/user.html";
+  window.location.href = `${baseUrl}:5500/Frontend/pages/user.html`;
 });
 
-const storedEmail = localStorage.getItem('email'); // obtient le mail stocké dans le localstorage
+const storedEmail = localStorage.getItem("email"); // obtient le mail stocké dans le localstorage
 
 if (storedEmail) {
   loginEmail.value = storedEmail;
 } else {
-  console.log("No email found in localstorage")
+  console.log("No email found in localstorage");
 }
 
 // REGISTER

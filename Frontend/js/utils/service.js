@@ -8,11 +8,12 @@ export async function getCharacters() {
 }
 
 export async function getCharacterFromSlug(slug) {
-  const response = await fetch(`https://hp-api.lainocs.fr/characters/${slug}`)
+  const response = await fetch(`https://hp-api.lainocs.fr/characters/${slug}`);
   return await response.json();
 }
 
-export async function getProfile() { // on obtient le profile du user connecté avec ses cartes possédées
+export async function getProfile() {
+  // on obtient le profile du user connecté avec ses cartes possédées
   const token = localStorage.getItem("token"); // on récupere le token qu'on retrouve dans le localstorage
 
   const response = await fetch(`${baseUrl}:3000/getMyProfile`, {
@@ -67,13 +68,14 @@ export async function getRandomCards() {
   return response.json();
 }
 
-export async function getUsers() { // on obtient tous les users inscrits
-  const response =  await fetch(`${baseUrl}:3000/users`, {
+export async function getUsers() {
+  // on obtient tous les users inscrits
+  const response = await fetch(`${baseUrl}:3000/users`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  });
 
-  return response
+  return response;
 }
